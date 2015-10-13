@@ -19,6 +19,7 @@
 		B70618061BCD306700AB7FD3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70617EE1BCD306700AB7FD3 /* UIKit.framework */; };
 		B706180E1BCD306700AB7FD3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B706180C1BCD306700AB7FD3 /* InfoPlist.strings */; };
 		B70618101BCD306700AB7FD3 /* zTextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B706180F1BCD306700AB7FD3 /* zTextTests.m */; };
+		B71213201BCD49D500F141FE /* PulleyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B712131F1BCD49D500F141FE /* PulleyViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		B706180B1BCD306700AB7FD3 /* zTextTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "zTextTests-Info.plist"; sourceTree = "<group>"; };
 		B706180D1BCD306700AB7FD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B706180F1BCD306700AB7FD3 /* zTextTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zTextTests.m; sourceTree = "<group>"; };
+		B712131E1BCD49D500F141FE /* PulleyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulleyViewController.h; sourceTree = "<group>"; };
+		B712131F1BCD49D500F141FE /* PulleyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PulleyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,8 @@
 		B70617DE1BCD306700AB7FD3 = {
 			isa = PBXGroup;
 			children = (
+				B712131B1BCD49C600F141FE /* sources */,
+				B712131A1BCD49C600F141FE /* libs */,
 				B70617F01BCD306700AB7FD3 /* zText */,
 				B70618091BCD306700AB7FD3 /* zTextTests */,
 				B70617E91BCD306700AB7FD3 /* Frameworks */,
@@ -109,6 +114,8 @@
 			children = (
 				B70617F91BCD306700AB7FD3 /* AppDelegate.h */,
 				B70617FA1BCD306700AB7FD3 /* AppDelegate.m */,
+				B712131C1BCD49D500F141FE /* baseUI */,
+				B71213211BCD4A5B00F141FE /* coretext */,
 				B70617FC1BCD306700AB7FD3 /* Images.xcassets */,
 				B70617F11BCD306700AB7FD3 /* Supporting Files */,
 			);
@@ -142,6 +149,60 @@
 				B706180C1BCD306700AB7FD3 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B712131A1BCD49C600F141FE /* libs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		B712131B1BCD49C600F141FE /* sources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = sources;
+			sourceTree = "<group>";
+		};
+		B712131C1BCD49D500F141FE /* baseUI */ = {
+			isa = PBXGroup;
+			children = (
+				B712131D1BCD49D500F141FE /* controllers */,
+			);
+			path = baseUI;
+			sourceTree = "<group>";
+		};
+		B712131D1BCD49D500F141FE /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B712131E1BCD49D500F141FE /* PulleyViewController.h */,
+				B712131F1BCD49D500F141FE /* PulleyViewController.m */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		B71213211BCD4A5B00F141FE /* coretext */ = {
+			isa = PBXGroup;
+			children = (
+				B71213221BCD4A5B00F141FE /* coretext */,
+				B71213231BCD4A5B00F141FE /* views */,
+			);
+			path = coretext;
+			sourceTree = "<group>";
+		};
+		B71213221BCD4A5B00F141FE /* coretext */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = coretext;
+			sourceTree = "<group>";
+		};
+		B71213231BCD4A5B00F141FE /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B71213201BCD49D500F141FE /* PulleyViewController.m in Sources */,
 				B70617FB1BCD306700AB7FD3 /* AppDelegate.m in Sources */,
 				B70617F71BCD306700AB7FD3 /* main.m in Sources */,
 			);
@@ -441,6 +503,7 @@
 				B70618151BCD306700AB7FD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B70618161BCD306700AB7FD3 /* Build configuration list for PBXNativeTarget "zTextTests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +512,7 @@
 				B70618181BCD306700AB7FD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
