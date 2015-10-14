@@ -20,6 +20,18 @@
 		B706180E1BCD306700AB7FD3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B706180C1BCD306700AB7FD3 /* InfoPlist.strings */; };
 		B70618101BCD306700AB7FD3 /* zTextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B706180F1BCD306700AB7FD3 /* zTextTests.m */; };
 		B71213201BCD49D500F141FE /* PulleyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B712131F1BCD49D500F141FE /* PulleyViewController.m */; };
+		B77D865F1BCE211800C2E716 /* HtmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B77D865E1BCE211800C2E716 /* HtmlParser.m */; };
+		B77D86611BCE272700C2E716 /* html.plist in Resources */ = {isa = PBXBuildFile; fileRef = B77D86601BCE272700C2E716 /* html.plist */; };
+		B77D86641BCE2A0300C2E716 /* TextLayouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B77D86631BCE2A0300C2E716 /* TextLayouter.m */; };
+		B77D86681BCE2B7800C2E716 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = B77D86671BCE2B7800C2E716 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B77D866B1BCE2C2300C2E716 /* TextContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B77D866A1BCE2C2300C2E716 /* TextContainer.m */; };
+		B77D866E1BCE367E00C2E716 /* TextAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = B77D866D1BCE367E00C2E716 /* TextAttributes.m */; };
+		B77D86711BCE410D00C2E716 /* TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B77D86701BCE410D00C2E716 /* TextView.m */; };
+		B77D86751BCE457A00C2E716 /* CoreTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B77D86741BCE457A00C2E716 /* CoreTextViewController.m */; };
+		B77D86781BCE45F900C2E716 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B77D86771BCE45F900C2E716 /* TextViewController.m */; };
+		B77D867B1BCE462D00C2E716 /* TinyWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B77D867A1BCE462D00C2E716 /* TinyWebViewController.m */; };
+		B77D86811BCE465E00C2E716 /* TinyFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B77D86801BCE465E00C2E716 /* TinyFieldViewController.m */; };
+		B77D86841BCE469000C2E716 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B77D86831BCE469000C2E716 /* ListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +63,29 @@
 		B706180F1BCD306700AB7FD3 /* zTextTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zTextTests.m; sourceTree = "<group>"; };
 		B712131E1BCD49D500F141FE /* PulleyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulleyViewController.h; sourceTree = "<group>"; };
 		B712131F1BCD49D500F141FE /* PulleyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PulleyViewController.m; sourceTree = "<group>"; };
+		B77D865D1BCE211800C2E716 /* HtmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HtmlParser.h; sourceTree = "<group>"; };
+		B77D865E1BCE211800C2E716 /* HtmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HtmlParser.m; sourceTree = "<group>"; };
+		B77D86601BCE272700C2E716 /* html.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = html.plist; sourceTree = "<group>"; };
+		B77D86621BCE2A0300C2E716 /* TextLayouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextLayouter.h; sourceTree = "<group>"; };
+		B77D86631BCE2A0300C2E716 /* TextLayouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextLayouter.m; sourceTree = "<group>"; };
+		B77D86661BCE2B7800C2E716 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		B77D86671BCE2B7800C2E716 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		B77D86691BCE2C2300C2E716 /* TextContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextContainer.h; sourceTree = "<group>"; };
+		B77D866A1BCE2C2300C2E716 /* TextContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextContainer.m; sourceTree = "<group>"; };
+		B77D866C1BCE367E00C2E716 /* TextAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextAttributes.h; sourceTree = "<group>"; };
+		B77D866D1BCE367E00C2E716 /* TextAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextAttributes.m; sourceTree = "<group>"; };
+		B77D866F1BCE410D00C2E716 /* TextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextView.h; sourceTree = "<group>"; };
+		B77D86701BCE410D00C2E716 /* TextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextView.m; sourceTree = "<group>"; };
+		B77D86731BCE457A00C2E716 /* CoreTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTextViewController.h; sourceTree = "<group>"; };
+		B77D86741BCE457A00C2E716 /* CoreTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreTextViewController.m; sourceTree = "<group>"; };
+		B77D86761BCE45F900C2E716 /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
+		B77D86771BCE45F900C2E716 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
+		B77D86791BCE462D00C2E716 /* TinyWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyWebViewController.h; sourceTree = "<group>"; };
+		B77D867A1BCE462D00C2E716 /* TinyWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinyWebViewController.m; sourceTree = "<group>"; };
+		B77D867F1BCE465E00C2E716 /* TinyFieldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyFieldViewController.h; sourceTree = "<group>"; };
+		B77D86801BCE465E00C2E716 /* TinyFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinyFieldViewController.m; sourceTree = "<group>"; };
+		B77D86821BCE469000C2E716 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		B77D86831BCE469000C2E716 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +189,7 @@
 		B712131A1BCD49C600F141FE /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				B77D86651BCE2B7800C2E716 /* regexKit */,
 			);
 			path = libs;
 			sourceTree = "<group>";
@@ -185,7 +221,9 @@
 		B71213211BCD4A5B00F141FE /* coretext */ = {
 			isa = PBXGroup;
 			children = (
+				B77D86601BCE272700C2E716 /* html.plist */,
 				B71213221BCD4A5B00F141FE /* coretext */,
+				B77D86721BCE457A00C2E716 /* controllers */,
 				B71213231BCD4A5B00F141FE /* views */,
 			);
 			path = coretext;
@@ -194,6 +232,14 @@
 		B71213221BCD4A5B00F141FE /* coretext */ = {
 			isa = PBXGroup;
 			children = (
+				B77D86691BCE2C2300C2E716 /* TextContainer.h */,
+				B77D866A1BCE2C2300C2E716 /* TextContainer.m */,
+				B77D866C1BCE367E00C2E716 /* TextAttributes.h */,
+				B77D866D1BCE367E00C2E716 /* TextAttributes.m */,
+				B77D865D1BCE211800C2E716 /* HtmlParser.h */,
+				B77D865E1BCE211800C2E716 /* HtmlParser.m */,
+				B77D86621BCE2A0300C2E716 /* TextLayouter.h */,
+				B77D86631BCE2A0300C2E716 /* TextLayouter.m */,
 			);
 			path = coretext;
 			sourceTree = "<group>";
@@ -201,8 +247,36 @@
 		B71213231BCD4A5B00F141FE /* views */ = {
 			isa = PBXGroup;
 			children = (
+				B77D866F1BCE410D00C2E716 /* TextView.h */,
+				B77D86701BCE410D00C2E716 /* TextView.m */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		B77D86651BCE2B7800C2E716 /* regexKit */ = {
+			isa = PBXGroup;
+			children = (
+				B77D86661BCE2B7800C2E716 /* RegexKitLite.h */,
+				B77D86671BCE2B7800C2E716 /* RegexKitLite.m */,
+			);
+			path = regexKit;
+			sourceTree = "<group>";
+		};
+		B77D86721BCE457A00C2E716 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B77D86731BCE457A00C2E716 /* CoreTextViewController.h */,
+				B77D86741BCE457A00C2E716 /* CoreTextViewController.m */,
+				B77D86761BCE45F900C2E716 /* TextViewController.h */,
+				B77D86771BCE45F900C2E716 /* TextViewController.m */,
+				B77D86821BCE469000C2E716 /* ListViewController.h */,
+				B77D86831BCE469000C2E716 /* ListViewController.m */,
+				B77D86791BCE462D00C2E716 /* TinyWebViewController.h */,
+				B77D867A1BCE462D00C2E716 /* TinyWebViewController.m */,
+				B77D867F1BCE465E00C2E716 /* TinyFieldViewController.h */,
+				B77D86801BCE465E00C2E716 /* TinyFieldViewController.m */,
+			);
+			path = controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B70617F51BCD306700AB7FD3 /* InfoPlist.strings in Resources */,
+				B77D86611BCE272700C2E716 /* html.plist in Resources */,
 				B70617FD1BCD306700AB7FD3 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,9 +375,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B77D86711BCE410D00C2E716 /* TextView.m in Sources */,
+				B77D86681BCE2B7800C2E716 /* RegexKitLite.m in Sources */,
+				B77D86841BCE469000C2E716 /* ListViewController.m in Sources */,
+				B77D86811BCE465E00C2E716 /* TinyFieldViewController.m in Sources */,
 				B71213201BCD49D500F141FE /* PulleyViewController.m in Sources */,
+				B77D867B1BCE462D00C2E716 /* TinyWebViewController.m in Sources */,
+				B77D86751BCE457A00C2E716 /* CoreTextViewController.m in Sources */,
+				B77D865F1BCE211800C2E716 /* HtmlParser.m in Sources */,
 				B70617FB1BCD306700AB7FD3 /* AppDelegate.m in Sources */,
+				B77D86641BCE2A0300C2E716 /* TextLayouter.m in Sources */,
+				B77D866B1BCE2C2300C2E716 /* TextContainer.m in Sources */,
+				B77D86781BCE45F900C2E716 /* TextViewController.m in Sources */,
 				B70617F71BCD306700AB7FD3 /* main.m in Sources */,
+				B77D866E1BCE367E00C2E716 /* TextAttributes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,7 +510,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "zText/zText-Prefix.pch";
 				INFOPLIST_FILE = "zText/zText-Info.plist";
+				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -437,7 +525,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "zText/zText-Prefix.pch";
 				INFOPLIST_FILE = "zText/zText-Info.plist";
+				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "CoreTextViewController.h"
 
 @implementation AppDelegate
 
@@ -18,7 +19,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    self.mainVC = [[UIViewController alloc] init];
+    self.mainVC = [[CoreTextViewController alloc] init];
     self.mainVC.view.frame = self.window.bounds;
     [self.window addSubview:self.mainVC.view];
     
