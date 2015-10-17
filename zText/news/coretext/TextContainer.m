@@ -8,10 +8,14 @@
 
 #import "TextContainer.h"
 #import "TextAttributes.h"
+#import "TextModel.h"
 
 @implementation TextContainer
 
 @synthesize originString;
+@synthesize parser;
+@synthesize emojiChache;
+@synthesize array;
 
 @synthesize attributedString;
 @synthesize textFramesetter;
@@ -28,6 +32,18 @@
 		CFRelease(self.textFrame);
 		self.textFrame = NULL;
 	}
+}
+
+- (id)init {
+    self = [super init];
+    
+    if (self) {
+        self.parser = [[TextParser alloc] init];
+        self.emojiChache = [[EmojiCache alloc] init];
+        self.array = [[NSMutableArray alloc] init];
+    }
+    
+    return self;
 }
 
 - (void)fillTextAttributes:(TextAttributes*)textAttributes inRange:(NSRange)range {
@@ -52,12 +68,51 @@
     CFRelease(attributes);
 }
 
+- (UIImage*)emojiForKey:(NSString*)key {
+    UIImage *emoji = [self.emojiChache emojiForKey:key];
+    if (emoji == nil) {
+        emoji = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", key]];
+//        emoji = [UIImage decodedImageWithImage:emoji];
+        if (emoji != nil) {
+            [self.emojiChache setEmoji:emoji forKey:key];
+        }
+    }
+    
+    return emoji;
+}
+
 - (void)containInSize:(CGSize)size {
+    [self.parser parseText:self.originString inArray:self.array];
+    
     self.attributedString = [[NSMutableAttributedString alloc] initWithString:self.originString];
     
     TextAttributes *textAttributes = [[TextAttributes alloc] init];
     [textAttributes fillTextFont:[UIFont systemFontOfSize:MinFontSize].fontName fontSize:MinFontSize textColor:NormalColor lineSpacing:5 lineAlignment:NSTextAlignmentLeft lineBreakMode:kCTLineBreakByTruncatingTail];
     [self fillTextAttributes:textAttributes inRange:NSMakeRange(0, [self.originString length])];
+    
+    for (TextModel *textModel in self.array) {
+        switch (textModel.type) {
+            case AT: {
+                [self.attributedString addAttribute:(NSString*)kCTForegroundColorAttributeName value:(id)textModel.color.CGColor range:textModel.range];
+                break;
+            }
+            case HREF: {
+                [self.attributedString addAttribute:(NSString*)kCTForegroundColorAttributeName value:(id)textModel.color.CGColor range:textModel.range];
+                break;
+            }
+            case EMOJI: {
+//                [self.attributedString addAttribute:(NSString*)kCTForegroundColorAttributeName value:(id)textModel.color.CGColor range:textModel.range];
+                break;
+            }
+            case IMAGE: {
+                [self.attributedString addAttribute:(NSString*)kCTForegroundColorAttributeName value:(id)textModel.color.CGColor range:textModel.range];
+                break;
+            }
+                
+            default:
+                break;
+        }
+    }
     
     self.textFramesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)(self.attributedString));
     

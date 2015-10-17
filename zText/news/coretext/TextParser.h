@@ -1,5 +1,5 @@
 //
-//  HtmlParser.h
+//  TextParser.h
 //  zText
 //
 //  Created by zykhbl on 15-10-14.
@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HtmlParser : NSObject
+@interface TextParser : NSObject
+
+- (void)parseText:(NSMutableString*)originString inArray:(NSMutableArray*)array;
 
 @end

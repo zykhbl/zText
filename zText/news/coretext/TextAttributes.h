@@ -11,7 +11,7 @@
 
 #define MinFontSize 14.0
 #define NormalColor [UIColor blackColor]
-#define HightLinkColor [UIColor colorWithHexString:@"#49af4c"]
+#define HightLinkColor [UIColor colorWithRed:73.0/255.0 green:175.0/255.0 blue:76.0/255.0 alpha:1.0]
 
 @interface TextAttributes : NSObject
 

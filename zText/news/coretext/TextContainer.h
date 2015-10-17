@@ -8,10 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreText/CoreText.h>
+#import "TextParser.h"
+#import "EmojiCache.h"
 
 @interface TextContainer : NSObject
 
-@property (nonatomic, strong) NSString *originString;
+@property (nonatomic, strong) NSMutableString *originString;
+@property (nonatomic, strong) TextParser *parser;
+@property (nonatomic, strong) EmojiCache *emojiChache;
+@property (nonatomic, strong) NSMutableArray *array;
 
 @property (nonatomic, strong) NSMutableAttributedString *attributedString;
 @property (nonatomic, assign) CTFramesetterRef textFramesetter;
