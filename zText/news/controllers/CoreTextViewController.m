@@ -7,14 +7,14 @@
 //
 
 #import "CoreTextViewController.h"
-#import "TextViewController.h"
+#import "LabelViewController.h"
 #import "ListViewController.h"
 #import "TinyWebViewController.h"
 #import "TinyFieldViewController.h"
 
 @implementation CoreTextViewController
 
-@synthesize textVC;
+@synthesize labelVC;
 @synthesize listVC;
 @synthesize tinyWebVC;
 @synthesize tinyFieldVC;
@@ -22,8 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (self.textVC == nil) {
-        self.textVC = [[TextViewController alloc] init];
+    if (self.labelVC == nil) {
+        self.labelVC = [[LabelViewController alloc] init];
     }
     
     if (self.listVC == nil) {
@@ -38,7 +38,7 @@
         self.tinyFieldVC = [[TinyFieldViewController alloc] init];
     }
     
-    [self addTabScrollView:@[@"普通", @"列表", @"网页", @"输入"] andMainScrollView:@[self.textVC, self.listVC, self.tinyWebVC, self.tinyFieldVC]];
+    [self addTabScrollView:@[@"普通", @"列表", @"网页", @"输入"] andMainScrollView:@[self.labelVC, self.listVC, self.tinyWebVC, self.tinyFieldVC]];
 }
 
 @end

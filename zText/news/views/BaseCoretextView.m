@@ -1,12 +1,12 @@
 //
-//  TextView.m
+//  BaseCoretextView.m
 //  zText
 //
 //  Created by zykhbl on 15-10-14.
 //  Copyright (c) 2015年 zykhbl. All rights reserved.
 //
 
-#import "TextView.h"
+#import "BaseCoretextView.h"
 
 CGRect CTRunGetTypographicBoundsAsRect(CTRunRef run, CTLineRef line, CGPoint lineOrigin) {
 	CGFloat ascent, descent, leading;
@@ -35,7 +35,7 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	return (intersectedRange.length > 0);
 }
 
-@implementation TextView
+@implementation BaseCoretextView
 
 @synthesize textContainer;
 @synthesize activeLink;
@@ -61,6 +61,16 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
     }
     
     CTFrameDraw(self.textContainer.textFrame, ctx);
+    
+    if (self.textContainer.hasEmoji) {
+        for (TextModel *textModel in self.textContainer.array) {
+            if (textModel.type == EMOJI) {                
+                UIGraphicsBeginImageContext(textModel.emojiRect.size);
+                CGContextDrawImage(ctx, textModel.emojiRect, [textModel.emoji  CGImage]);
+                UIGraphicsEndImageContext();
+            }
+        }
+    }
     
     CGContextRestoreGState(ctx);
 }

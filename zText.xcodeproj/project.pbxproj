@@ -20,10 +20,12 @@
 		B706180E1BCD306700AB7FD3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B706180C1BCD306700AB7FD3 /* InfoPlist.strings */; };
 		B70618101BCD306700AB7FD3 /* zTextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B706180F1BCD306700AB7FD3 /* zTextTests.m */; };
 		B71213201BCD49D500F141FE /* PulleyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B712131F1BCD49D500F141FE /* PulleyViewController.m */; };
+		B77A5E0E1BD2A50F006C526C /* [p7].png in Resources */ = {isa = PBXBuildFile; fileRef = B77A5E0C1BD2A50F006C526C /* [p7].png */; };
+		B77A5E0F1BD2A50F006C526C /* [p8].png in Resources */ = {isa = PBXBuildFile; fileRef = B77A5E0D1BD2A50F006C526C /* [p8].png */; };
 		B77D86681BCE2B7800C2E716 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = B77D86671BCE2B7800C2E716 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B7BE8B6B1BD23E4800216019 /* CoreTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B551BD23E4800216019 /* CoreTextViewController.m */; };
 		B7BE8B6C1BD23E4800216019 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B571BD23E4800216019 /* ListViewController.m */; };
-		B7BE8B6D1BD23E4800216019 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B591BD23E4800216019 /* TextViewController.m */; };
+		B7BE8B6D1BD23E4800216019 /* LabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B591BD23E4800216019 /* LabelViewController.m */; };
 		B7BE8B6E1BD23E4800216019 /* TinyFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B5B1BD23E4800216019 /* TinyFieldViewController.m */; };
 		B7BE8B6F1BD23E4800216019 /* TinyWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B5D1BD23E4800216019 /* TinyWebViewController.m */; };
 		B7BE8B701BD23E4800216019 /* TextParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B601BD23E4800216019 /* TextParser.m */; };
@@ -31,7 +33,7 @@
 		B7BE8B721BD23E4800216019 /* TextContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B641BD23E4800216019 /* TextContainer.m */; };
 		B7BE8B731BD23E4800216019 /* TextLayouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B661BD23E4800216019 /* TextLayouter.m */; };
 		B7BE8B741BD23E4800216019 /* html.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7BE8B671BD23E4800216019 /* html.plist */; };
-		B7BE8B751BD23E4800216019 /* TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B6A1BD23E4800216019 /* TextView.m */; };
+		B7BE8B751BD23E4800216019 /* BaseCoretextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B6A1BD23E4800216019 /* BaseCoretextView.m */; };
 		B7BE8B781BD23EFA00216019 /* TextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B771BD23EFA00216019 /* TextModel.m */; };
 		B7BE8B7B1BD24B0200216019 /* EmojiCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B7A1BD24B0200216019 /* EmojiCache.m */; };
 /* End PBXBuildFile section */
@@ -65,14 +67,16 @@
 		B706180F1BCD306700AB7FD3 /* zTextTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zTextTests.m; sourceTree = "<group>"; };
 		B712131E1BCD49D500F141FE /* PulleyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulleyViewController.h; sourceTree = "<group>"; };
 		B712131F1BCD49D500F141FE /* PulleyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PulleyViewController.m; sourceTree = "<group>"; };
+		B77A5E0C1BD2A50F006C526C /* [p7].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[p7].png"; sourceTree = "<group>"; };
+		B77A5E0D1BD2A50F006C526C /* [p8].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[p8].png"; sourceTree = "<group>"; };
 		B77D86661BCE2B7800C2E716 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		B77D86671BCE2B7800C2E716 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		B7BE8B541BD23E4800216019 /* CoreTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTextViewController.h; sourceTree = "<group>"; };
 		B7BE8B551BD23E4800216019 /* CoreTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreTextViewController.m; sourceTree = "<group>"; };
 		B7BE8B561BD23E4800216019 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		B7BE8B571BD23E4800216019 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
-		B7BE8B581BD23E4800216019 /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
-		B7BE8B591BD23E4800216019 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
+		B7BE8B581BD23E4800216019 /* LabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelViewController.h; sourceTree = "<group>"; };
+		B7BE8B591BD23E4800216019 /* LabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelViewController.m; sourceTree = "<group>"; };
 		B7BE8B5A1BD23E4800216019 /* TinyFieldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyFieldViewController.h; sourceTree = "<group>"; };
 		B7BE8B5B1BD23E4800216019 /* TinyFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinyFieldViewController.m; sourceTree = "<group>"; };
 		B7BE8B5C1BD23E4800216019 /* TinyWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyWebViewController.h; sourceTree = "<group>"; };
@@ -86,8 +90,8 @@
 		B7BE8B651BD23E4800216019 /* TextLayouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextLayouter.h; sourceTree = "<group>"; };
 		B7BE8B661BD23E4800216019 /* TextLayouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextLayouter.m; sourceTree = "<group>"; };
 		B7BE8B671BD23E4800216019 /* html.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = html.plist; sourceTree = "<group>"; };
-		B7BE8B691BD23E4800216019 /* TextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextView.h; sourceTree = "<group>"; };
-		B7BE8B6A1BD23E4800216019 /* TextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextView.m; sourceTree = "<group>"; };
+		B7BE8B691BD23E4800216019 /* BaseCoretextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCoretextView.h; sourceTree = "<group>"; };
+		B7BE8B6A1BD23E4800216019 /* BaseCoretextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCoretextView.m; sourceTree = "<group>"; };
 		B7BE8B761BD23EFA00216019 /* TextModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextModel.h; sourceTree = "<group>"; };
 		B7BE8B771BD23EFA00216019 /* TextModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextModel.m; sourceTree = "<group>"; };
 		B7BE8B791BD24B0200216019 /* EmojiCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojiCache.h; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 		B712131B1BCD49C600F141FE /* sources */ = {
 			isa = PBXGroup;
 			children = (
+				B77A5E0C1BD2A50F006C526C /* [p7].png */,
+				B77A5E0D1BD2A50F006C526C /* [p8].png */,
 			);
 			path = sources;
 			sourceTree = "<group>";
@@ -236,9 +242,9 @@
 		B7BE8B521BD23E4800216019 /* news */ = {
 			isa = PBXGroup;
 			children = (
+				B7BE8B671BD23E4800216019 /* html.plist */,
 				B7BE8B5E1BD23E4800216019 /* coretext */,
 				B7BE8B531BD23E4800216019 /* controllers */,
-				B7BE8B671BD23E4800216019 /* html.plist */,
 				B7BE8B681BD23E4800216019 /* views */,
 			);
 			path = news;
@@ -249,14 +255,14 @@
 			children = (
 				B7BE8B541BD23E4800216019 /* CoreTextViewController.h */,
 				B7BE8B551BD23E4800216019 /* CoreTextViewController.m */,
+				B7BE8B581BD23E4800216019 /* LabelViewController.h */,
+				B7BE8B591BD23E4800216019 /* LabelViewController.m */,
 				B7BE8B561BD23E4800216019 /* ListViewController.h */,
 				B7BE8B571BD23E4800216019 /* ListViewController.m */,
-				B7BE8B581BD23E4800216019 /* TextViewController.h */,
-				B7BE8B591BD23E4800216019 /* TextViewController.m */,
-				B7BE8B5A1BD23E4800216019 /* TinyFieldViewController.h */,
-				B7BE8B5B1BD23E4800216019 /* TinyFieldViewController.m */,
 				B7BE8B5C1BD23E4800216019 /* TinyWebViewController.h */,
 				B7BE8B5D1BD23E4800216019 /* TinyWebViewController.m */,
+				B7BE8B5A1BD23E4800216019 /* TinyFieldViewController.h */,
+				B7BE8B5B1BD23E4800216019 /* TinyFieldViewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -264,12 +270,12 @@
 		B7BE8B5E1BD23E4800216019 /* coretext */ = {
 			isa = PBXGroup;
 			children = (
+				B7BE8B791BD24B0200216019 /* EmojiCache.h */,
+				B7BE8B7A1BD24B0200216019 /* EmojiCache.m */,
 				B7BE8B761BD23EFA00216019 /* TextModel.h */,
 				B7BE8B771BD23EFA00216019 /* TextModel.m */,
 				B7BE8B611BD23E4800216019 /* TextAttributes.h */,
 				B7BE8B621BD23E4800216019 /* TextAttributes.m */,
-				B7BE8B791BD24B0200216019 /* EmojiCache.h */,
-				B7BE8B7A1BD24B0200216019 /* EmojiCache.m */,
 				B7BE8B631BD23E4800216019 /* TextContainer.h */,
 				B7BE8B641BD23E4800216019 /* TextContainer.m */,
 				B7BE8B5F1BD23E4800216019 /* TextParser.h */,
@@ -283,8 +289,8 @@
 		B7BE8B681BD23E4800216019 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				B7BE8B691BD23E4800216019 /* TextView.h */,
-				B7BE8B6A1BD23E4800216019 /* TextView.m */,
+				B7BE8B691BD23E4800216019 /* BaseCoretextView.h */,
+				B7BE8B6A1BD23E4800216019 /* BaseCoretextView.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -366,6 +372,8 @@
 			files = (
 				B70617F51BCD306700AB7FD3 /* InfoPlist.strings in Resources */,
 				B7BE8B741BD23E4800216019 /* html.plist in Resources */,
+				B77A5E0F1BD2A50F006C526C /* [p8].png in Resources */,
+				B77A5E0E1BD2A50F006C526C /* [p7].png in Resources */,
 				B70617FD1BCD306700AB7FD3 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,12 +396,12 @@
 				B7BE8B6B1BD23E4800216019 /* CoreTextViewController.m in Sources */,
 				B7BE8B731BD23E4800216019 /* TextLayouter.m in Sources */,
 				B77D86681BCE2B7800C2E716 /* RegexKitLite.m in Sources */,
-				B7BE8B6D1BD23E4800216019 /* TextViewController.m in Sources */,
+				B7BE8B6D1BD23E4800216019 /* LabelViewController.m in Sources */,
 				B7BE8B701BD23E4800216019 /* TextParser.m in Sources */,
 				B7BE8B6E1BD23E4800216019 /* TinyFieldViewController.m in Sources */,
 				B7BE8B6C1BD23E4800216019 /* ListViewController.m in Sources */,
 				B7BE8B781BD23EFA00216019 /* TextModel.m in Sources */,
-				B7BE8B751BD23E4800216019 /* TextView.m in Sources */,
+				B7BE8B751BD23E4800216019 /* BaseCoretextView.m in Sources */,
 				B7BE8B711BD23E4800216019 /* TextAttributes.m in Sources */,
 				B71213201BCD49D500F141FE /* PulleyViewController.m in Sources */,
 				B7BE8B6F1BD23E4800216019 /* TinyWebViewController.m in Sources */,

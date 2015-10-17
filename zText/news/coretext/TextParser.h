@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TextModel.h"
+#import "TextAttributes.h"
 
 @interface TextParser : NSObject
 

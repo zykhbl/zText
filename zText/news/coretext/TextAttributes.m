@@ -36,15 +36,15 @@
     return cfont;
 }
 
-- (void)fillTextFont:(NSString*)fontname fontSize:(CGFloat)fontSize textColor:(UIColor*)textColor lineSpacing:(CGFloat)lineSpacing lineAlignment:(NSTextAlignment)lineAlignment lineBreakMode:(CTLineBreakMode)lineBreakMode {
+- (void)fillTextFont:(NSString*)fontname fontSize:(CGFloat)size textColor:(UIColor*)color lineSpacing:(CGFloat)spacing lineAlignment:(NSTextAlignment)alignment lineBreakMode:(CTLineBreakMode)breakMode {
     [self clearFont];
     self.font = [self createFont:fontname];
     
-    self.fontSize = MinFontSize;
-    self.textColor = NormalColor;
-    self.lineSpacing = 5;
-    self.lineAlignment = NSTextAlignmentLeft;
-    self.lineBreakMode = kCTLineBreakByTruncatingTail;
+    self.fontSize = size;
+    self.textColor = color;
+    self.lineSpacing = spacing;
+    self.lineAlignment = alignment;
+    self.lineBreakMode = breakMode;
 }
 
 @end

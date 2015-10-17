@@ -1,5 +1,5 @@
 //
-//  TextView.h
+//  BaseCoretextView.h
 //  zText
 //
 //  Created by zykhbl on 15-10-14.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TextContainer.h"
 
-@interface TextView : UIView
+@interface BaseCoretextView : UIView
 
 @property (nonatomic, strong) TextContainer *textContainer;
 @property (nonatomic, strong) NSTextCheckingResult *activeLink;

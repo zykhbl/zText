@@ -17,4 +17,9 @@
 @synthesize color;
 @synthesize url;
 
+@synthesize emoji;
+@synthesize emojiWidth;
+@synthesize emojiHeight;
+@synthesize emojiRect;
+
 @end

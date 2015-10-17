@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseCoretextView.h"
 
-@interface TextViewController : UIViewController
+@interface LabelViewController : UIViewController
+
+@property (nonatomic, strong) BaseCoretextView *coreTextView;
 
 @end

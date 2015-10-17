@@ -7,7 +7,6 @@
 //
 
 typedef enum {
-	AT,
 	HREF,
 	EMOJI,
     IMAGE
@@ -23,5 +22,10 @@ typedef enum {
 
 @property (nonatomic, strong) UIColor *color;
 @property (nonatomic, strong) NSURL *url;
+
+@property (nonatomic, strong) UIImage *emoji;
+@property (nonatomic, assign) CGFloat emojiWidth;
+@property (nonatomic, assign) CGFloat emojiHeight;
+@property (nonatomic, assign) CGRect emojiRect;
 
 @end

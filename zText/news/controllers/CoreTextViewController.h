@@ -10,7 +10,7 @@
 
 @interface CoreTextViewController : PulleyViewController
 
-@property (nonatomic, strong) UIViewController *textVC;
+@property (nonatomic, strong) UIViewController *labelVC;
 @property (nonatomic, strong) UIViewController *listVC;
 @property (nonatomic, strong) UIViewController *tinyWebVC;
 @property (nonatomic, strong) UIViewController *tinyFieldVC;

@@ -22,5 +22,8 @@
 @property (nonatomic, assign) CTFramesetterRef textFramesetter;
 @property (nonatomic, assign) CGRect frame;
 @property (nonatomic, assign) CTFrameRef textFrame;
+@property (nonatomic, assign) BOOL hasEmoji;
+
+- (void)containInSize:(CGSize)size;
 
 @end
