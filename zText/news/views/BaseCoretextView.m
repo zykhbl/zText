@@ -64,7 +64,7 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
     
     if (self.textContainer.hasEmoji) {
         for (TextModel *textModel in self.textContainer.array) {
-            if (textModel.type == EMOJI) {                
+            if (textModel.type == EMOJI && textModel.emoji != nil) {
                 UIGraphicsBeginImageContext(textModel.emojiRect.size);
                 CGContextDrawImage(ctx, textModel.emojiRect, [textModel.emoji  CGImage]);
                 UIGraphicsEndImageContext();
@@ -75,7 +75,7 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
     CGContextRestoreGState(ctx);
 }
 
--(void)drawActiveLinkHighlightForRect:(CGRect)rect {
+- (void)drawActiveLinkHighlightForRect:(CGRect)rect {
 	CGContextRef ctx = UIGraphicsGetCurrentContext();
 	CGContextSaveGState(ctx);
     

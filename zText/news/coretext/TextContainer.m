@@ -7,6 +7,7 @@
 //
 
 #import "TextContainer.h"
+#import "SDWebImageDecoder.h"
 
 @implementation TextContainer
 
@@ -38,7 +39,7 @@
     
     if (self) {
         self.parser = [[TextParser alloc] init];
-        self.emojiChache = [[EmojiCache alloc] init];
+        self.emojiChache = [EmojiCache defaultEmojiCache];
         self.array = [[NSMutableArray alloc] init];
     }
     
@@ -71,7 +72,7 @@
     UIImage *emoji = [self.emojiChache emojiForKey:key];
     if (emoji == nil) {
         emoji = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", key]];
-//        emoji = [UIImage decodedImageWithImage:emoji];
+        emoji = [UIImage decodedImageWithImage:emoji];
         if (emoji != nil) {
             [self.emojiChache setEmoji:emoji forKey:key];
         }
@@ -143,8 +144,7 @@ static CGFloat getWidth(void* ref){
     
     self.frame = CGRectZero;
     frame.size = CTFramesetterSuggestFrameSizeWithConstraints(self.textFramesetter, CFRangeMake(0, 0), NULL, CGSizeMake(size.width, CGFLOAT_MAX), NULL);
-    frame.size.width
-    = size.width;
+    frame.size.width = size.width;
     
     CGMutablePathRef textPath = CGPathCreateMutable();
     CGPathAddRect(textPath, NULL, self.frame);
