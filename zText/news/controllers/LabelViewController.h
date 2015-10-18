@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseCoretextView.h"
+#import "TinyWebView.h"
 
 @interface LabelViewController : UIViewController
 
-@property (nonatomic, strong) BaseCoretextView *coreTextView;
+@property (nonatomic, strong) TinyWebView *webView;
 
 @end

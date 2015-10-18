@@ -14,4 +14,6 @@
 @property (nonatomic, strong) TextContainer *textContainer;
 @property (nonatomic, strong) NSTextCheckingResult *activeLink;
 
+- (void)addImageViews;
+
 @end

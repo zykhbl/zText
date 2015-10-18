@@ -36,6 +36,7 @@
 		B71F07371BD3464800E31182 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B71F07251BD3464800E31182 /* UIImageView+HighlightedWebCache.m */; };
 		B71F07381BD3464800E31182 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B71F07271BD3464800E31182 /* UIImageView+WebCache.m */; };
 		B71F07391BD3464800E31182 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B71F07291BD3464800E31182 /* UIView+WebCacheOperation.m */; };
+		B75D1A801BD3A98100CEFC78 /* TinyWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = B75D1A7F1BD3A98100CEFC78 /* TinyWebView.m */; };
 		B77A5E0E1BD2A50F006C526C /* [p7].png in Resources */ = {isa = PBXBuildFile; fileRef = B77A5E0C1BD2A50F006C526C /* [p7].png */; };
 		B77A5E0F1BD2A50F006C526C /* [p8].png in Resources */ = {isa = PBXBuildFile; fileRef = B77A5E0D1BD2A50F006C526C /* [p8].png */; };
 		B77D86681BCE2B7800C2E716 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = B77D86671BCE2B7800C2E716 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -47,7 +48,6 @@
 		B7BE8B701BD23E4800216019 /* TextParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B601BD23E4800216019 /* TextParser.m */; };
 		B7BE8B711BD23E4800216019 /* TextAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B621BD23E4800216019 /* TextAttributes.m */; };
 		B7BE8B721BD23E4800216019 /* TextContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B641BD23E4800216019 /* TextContainer.m */; };
-		B7BE8B731BD23E4800216019 /* TextLayouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B661BD23E4800216019 /* TextLayouter.m */; };
 		B7BE8B741BD23E4800216019 /* html.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7BE8B671BD23E4800216019 /* html.plist */; };
 		B7BE8B751BD23E4800216019 /* BaseCoretextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B6A1BD23E4800216019 /* BaseCoretextView.m */; };
 		B7BE8B781BD23EFA00216019 /* TextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B771BD23EFA00216019 /* TextModel.m */; };
@@ -116,6 +116,8 @@
 		B71F07271BD3464800E31182 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		B71F07281BD3464800E31182 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		B71F07291BD3464800E31182 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		B75D1A7E1BD3A98100CEFC78 /* TinyWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyWebView.h; sourceTree = "<group>"; };
+		B75D1A7F1BD3A98100CEFC78 /* TinyWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinyWebView.m; sourceTree = "<group>"; };
 		B77A5E0C1BD2A50F006C526C /* [p7].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[p7].png"; sourceTree = "<group>"; };
 		B77A5E0D1BD2A50F006C526C /* [p8].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[p8].png"; sourceTree = "<group>"; };
 		B77D86661BCE2B7800C2E716 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
@@ -136,8 +138,6 @@
 		B7BE8B621BD23E4800216019 /* TextAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextAttributes.m; sourceTree = "<group>"; };
 		B7BE8B631BD23E4800216019 /* TextContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextContainer.h; sourceTree = "<group>"; };
 		B7BE8B641BD23E4800216019 /* TextContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextContainer.m; sourceTree = "<group>"; };
-		B7BE8B651BD23E4800216019 /* TextLayouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextLayouter.h; sourceTree = "<group>"; };
-		B7BE8B661BD23E4800216019 /* TextLayouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextLayouter.m; sourceTree = "<group>"; };
 		B7BE8B671BD23E4800216019 /* html.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = html.plist; sourceTree = "<group>"; };
 		B7BE8B691BD23E4800216019 /* BaseCoretextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCoretextView.h; sourceTree = "<group>"; };
 		B7BE8B6A1BD23E4800216019 /* BaseCoretextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCoretextView.m; sourceTree = "<group>"; };
@@ -370,8 +370,6 @@
 				B7BE8B641BD23E4800216019 /* TextContainer.m */,
 				B7BE8B5F1BD23E4800216019 /* TextParser.h */,
 				B7BE8B601BD23E4800216019 /* TextParser.m */,
-				B7BE8B651BD23E4800216019 /* TextLayouter.h */,
-				B7BE8B661BD23E4800216019 /* TextLayouter.m */,
 			);
 			path = coretext;
 			sourceTree = "<group>";
@@ -381,6 +379,8 @@
 			children = (
 				B7BE8B691BD23E4800216019 /* BaseCoretextView.h */,
 				B7BE8B6A1BD23E4800216019 /* BaseCoretextView.m */,
+				B75D1A7E1BD3A98100CEFC78 /* TinyWebView.h */,
+				B75D1A7F1BD3A98100CEFC78 /* TinyWebView.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -485,7 +485,6 @@
 			files = (
 				B71F07341BD3464800E31182 /* UIImage+GIF.m in Sources */,
 				B7BE8B6B1BD23E4800216019 /* CoreTextViewController.m in Sources */,
-				B7BE8B731BD23E4800216019 /* TextLayouter.m in Sources */,
 				B77D86681BCE2B7800C2E716 /* RegexKitLite.m in Sources */,
 				B7BE8B6D1BD23E4800216019 /* LabelViewController.m in Sources */,
 				B71F07361BD3464800E31182 /* UIImage+WebP.m in Sources */,
@@ -511,6 +510,7 @@
 				B7BE8B721BD23E4800216019 /* TextContainer.m in Sources */,
 				B71F072A1BD3464800E31182 /* MKAnnotationView+WebCache.m in Sources */,
 				B71F07351BD3464800E31182 /* UIImage+MultiFormat.m in Sources */,
+				B75D1A801BD3A98100CEFC78 /* TinyWebView.m in Sources */,
 				B71F07391BD3464800E31182 /* UIView+WebCacheOperation.m in Sources */,
 				B71F072D1BD3464800E31182 /* SDWebImageCompat.m in Sources */,
 				B70617F71BCD306700AB7FD3 /* main.m in Sources */,

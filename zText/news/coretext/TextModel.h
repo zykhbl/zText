@@ -9,7 +9,9 @@
 typedef enum {
 	HREF,
 	EMOJI,
-    IMAGE
+    IMAGE,
+    AUDIO,
+    VIDEO
 } TextType;
 
 #import <Foundation/Foundation.h>
@@ -24,8 +26,8 @@ typedef enum {
 @property (nonatomic, strong) NSURL *url;
 
 @property (nonatomic, strong) UIImage *emoji;
-@property (nonatomic, assign) CGFloat emojiWidth;
-@property (nonatomic, assign) CGFloat emojiHeight;
-@property (nonatomic, assign) CGRect emojiRect;
+@property (nonatomic, assign) CGFloat width;
+@property (nonatomic, assign) CGFloat height;
+@property (nonatomic, assign) CGRect rect;
 
 @end

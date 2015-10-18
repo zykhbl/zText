@@ -18,8 +18,8 @@
 @synthesize url;
 
 @synthesize emoji;
-@synthesize emojiWidth;
-@synthesize emojiHeight;
-@synthesize emojiRect;
+@synthesize width;
+@synthesize height;
+@synthesize rect;
 
 @end
