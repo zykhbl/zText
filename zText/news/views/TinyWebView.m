@@ -12,16 +12,21 @@
 
 @synthesize coretextView;
 
-- (id)init {
-    self = [super init];
-    
-    if (self) {
+- (void)renderString:(NSString*)text {
+    if (self.coretextView == nil) {
         self.coretextView = [[BaseCoretextView alloc] init];
         self.coretextView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.coretextView];
     }
     
-    return self;
+    TextContainer *textContainer = [[TextContainer alloc] init];
+    textContainer.originString = [NSMutableString stringWithString:text];
+    [textContainer containInSize:self.bounds.size];
+    self.coretextView.textContainer = textContainer;
+    self.coretextView.frame = self.coretextView.textContainer.frame;
+    [self.coretextView addImageViews];
+    
+    self.contentSize = [self.coretextView.textContainer fitSize];
 }
 
 @end

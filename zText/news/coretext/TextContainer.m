@@ -262,13 +262,24 @@ static CGFloat getWidth(void* ref){
                 CGFloat xOffset = CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, NULL);
                 CGFloat x = lineOrigins[i].x + xOffset;
                 CGFloat y = lineOrigins[0].y - lineOrigins[i].y;
-                
+                CGFloat w = self.frame.size.width;
                 CGFloat h = ImageHeight;
+            
+                BOOL addDiff = NO;
                 if (x == 0.0) {
+                    addDiff = YES;
+                    x = 0.0;
                     h -= MinFontSize + LineSpacing;
+                } else if (x <= 80.0 || x >= 240.0) {
+                    x = 0.0;
+                    y = lineOrigins[0].y - lineOrigins[i + 1].y;
+                } else if (x > 80.0 && x < 140.0) {
+                    w = ImageHeight;
+                } else {
+                    w -= x;
                 }
-                CGRect imageRect = CGRectMake(x, y, self.frame.size.width - x, h);
                 
+                CGRect imageRect = CGRectMake(x, y,  w, h);
                 CGAffineTransform transform = CGAffineTransformIdentity;
                 transform = CGAffineTransformScale(transform, 1, -1);
                 transform = CGAffineTransformTranslate(transform, 0, -self.frame.size.height);
@@ -278,9 +289,10 @@ static CGFloat getWidth(void* ref){
                 [self.imagePathArray addObject:clipPathDict];
                 CFRelease(clipPath);
                 
-                if (x == 0.0) {
+                if (addDiff) {
                     imageRect.size.height += MinFontSize + LineSpacing * 2.0;
                 }
+                
                 textModel.rect = imageRect;
                 
                 return;
@@ -312,7 +324,7 @@ static CGFloat getWidth(void* ref){
     int lineCount = [lines count];
     CGPoint lineOrigins[lineCount];
     CTFrameGetLineOrigins(self.textFrame, CFRangeMake(0, 0), lineOrigins);
-    return CGSizeMake(self.frame.size.width, lineOrigins[0].y - lineOrigins[lineCount - 1].y + LineSpacing * 2.0);
+    return CGSizeMake(self.frame.size.width, lineOrigins[0].y - lineOrigins[lineCount - 1].y + LineSpacing + MinFontSize);
 }
 
 @end

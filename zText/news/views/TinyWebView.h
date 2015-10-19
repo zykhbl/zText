@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) BaseCoretextView *coretextView;
 
+- (void)renderString:(NSString*)text;
+
 @end

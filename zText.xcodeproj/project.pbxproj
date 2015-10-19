@@ -40,6 +40,7 @@
 		B77A5E0E1BD2A50F006C526C /* [p7].png in Resources */ = {isa = PBXBuildFile; fileRef = B77A5E0C1BD2A50F006C526C /* [p7].png */; };
 		B77A5E0F1BD2A50F006C526C /* [p8].png in Resources */ = {isa = PBXBuildFile; fileRef = B77A5E0D1BD2A50F006C526C /* [p8].png */; };
 		B77D86681BCE2B7800C2E716 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = B77D86671BCE2B7800C2E716 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B7ADC9A21BD41581001859A9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B7ADC9A11BD41581001859A9 /* README.md */; };
 		B7BE8B6B1BD23E4800216019 /* CoreTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B551BD23E4800216019 /* CoreTextViewController.m */; };
 		B7BE8B6C1BD23E4800216019 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B571BD23E4800216019 /* ListViewController.m */; };
 		B7BE8B6D1BD23E4800216019 /* LabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE8B591BD23E4800216019 /* LabelViewController.m */; };
@@ -122,6 +123,7 @@
 		B77A5E0D1BD2A50F006C526C /* [p8].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[p8].png"; sourceTree = "<group>"; };
 		B77D86661BCE2B7800C2E716 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		B77D86671BCE2B7800C2E716 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		B7ADC9A11BD41581001859A9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		B7BE8B541BD23E4800216019 /* CoreTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTextViewController.h; sourceTree = "<group>"; };
 		B7BE8B551BD23E4800216019 /* CoreTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreTextViewController.m; sourceTree = "<group>"; };
 		B7BE8B561BD23E4800216019 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		B70617DE1BCD306700AB7FD3 = {
 			isa = PBXGroup;
 			children = (
+				B7ADC9A11BD41581001859A9 /* README.md */,
 				B712131B1BCD49C600F141FE /* sources */,
 				B712131A1BCD49C600F141FE /* libs */,
 				B70617F01BCD306700AB7FD3 /* zText */,
@@ -460,6 +463,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7ADC9A21BD41581001859A9 /* README.md in Resources */,
 				B70617F51BCD306700AB7FD3 /* InfoPlist.strings in Resources */,
 				B7BE8B741BD23E4800216019 /* html.plist in Resources */,
 				B77A5E0F1BD2A50F006C526C /* [p8].png in Resources */,
