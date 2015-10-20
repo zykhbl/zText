@@ -32,13 +32,11 @@
     
     CTFrameDraw(self.textContainer.textFrame, ctx);
     
-    if (self.textContainer.hasEmoji) {
-        for (TextModel *textModel in self.textContainer.array) {
-            if (textModel.type == EMOJI && textModel.emoji != nil) {
-                UIGraphicsBeginImageContext(textModel.rect.size);
-                CGContextDrawImage(ctx, textModel.rect, [textModel.emoji  CGImage]);
-                UIGraphicsEndImageContext();
-            }
+    for (TextModel *textModel in self.textContainer.emojiArray) {
+        if (textModel.emoji != nil) {
+            UIGraphicsBeginImageContext(textModel.rect.size);
+            CGContextDrawImage(ctx, textModel.rect, [textModel.emoji  CGImage]);
+            UIGraphicsEndImageContext();
         }
     }
     
@@ -46,15 +44,11 @@
 }
 
 - (void)addImageViews {
-    if (self.textContainer.hasImage) {
-        for (TextModel *textModel in self.textContainer.array) {
-            if (textModel.type == IMAGE) {
-                CGRect rect = textModel.rect;
-                UIImageView *imgView = [[UIImageView alloc] initWithFrame:rect];
-                [imgView sd_setImageWithURL:[[NSURL alloc] initWithString:textModel.text]];
-                [self addSubview:imgView];
-            }
-        }
+    for (TextModel *textModel in self.textContainer.imageArray) {
+        CGRect rect = textModel.rect;
+        UIImageView *imgView = [[UIImageView alloc] initWithFrame:rect];
+        [imgView sd_setImageWithURL:[[NSURL alloc] initWithString:textModel.text]];
+        [self addSubview:imgView];
     }
 }
 

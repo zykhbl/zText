@@ -16,15 +16,15 @@
 @property (nonatomic, strong) NSMutableString *originString;
 @property (nonatomic, strong) TextParser *parser;
 @property (nonatomic, strong) EmojiCache *emojiChache;
-@property (nonatomic, strong) NSMutableArray *array;
+@property (nonatomic, strong) NSMutableArray *hrefArray;
+@property (nonatomic, strong) NSMutableArray *emojiArray;
+@property (nonatomic, strong) NSMutableArray *imageArray;
 @property (nonatomic, strong) NSMutableArray *imagePathArray;
 
 @property (nonatomic, strong) NSMutableAttributedString *attributedString;
 @property (nonatomic, assign) CTFramesetterRef textFramesetter;
 @property (nonatomic, assign) CGRect frame;
 @property (nonatomic, assign) CTFrameRef textFrame;
-@property (nonatomic, assign) BOOL hasEmoji;
-@property (nonatomic, assign) BOOL hasImage;
 
 - (void)containInSize:(CGSize)size;
 - (CGSize)fitSize;

@@ -12,6 +12,6 @@
 
 @interface TextParser : NSObject
 
-- (void)parseText:(NSMutableString*)originString inArray:(NSMutableArray*)array;
+- (void)parseText:(NSMutableString*)originString inHrefArray:(NSMutableArray*)hrefArray inEmojiArray:(NSMutableArray*)emojiArray inImageArray:(NSMutableArray*)imageArray;
 
 @end

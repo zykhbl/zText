@@ -18,7 +18,7 @@
 
 @implementation TextParser
 
-- (void)parseAudioHrefOfText:(NSMutableString*)originString regex:(NSString*)regex linkHead:(NSString*)linkHead inArray:(NSMutableArray*)array {
+- (void)parseAudioHrefOfText:(NSMutableString*)originString regex:(NSString*)regex linkHead:(NSString*)linkHead inHrefArray:(NSMutableArray*)hrefArray {
     NSString *textStr = [NSString stringWithString:originString];
     NSInteger begin = 0;
     int offset = 0;
@@ -38,19 +38,22 @@
         textModel.color = HightLinkColor;
         NSString *keyWord = CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (__bridge CFStringRef)(matchStr), NULL, (__bridge CFStringRef)(CharactersToBeEscaped), kCFStringEncodingUTF8));
         textModel.url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", linkHead, keyWord]];
-        [array addObject:textModel];
+        [hrefArray addObject:textModel];
         
         [originString replaceCharactersInRange:NSMakeRange(range.location - offset, range.length) withString:textModel.text];
         offset += range.length - [textModel.text length];
     }
 }
 
-- (void)parseEmojiOfText:(NSMutableString*)originString regex:(NSString*)regex inArray:(NSMutableArray*)array {
+- (void)parseEmojiOfText:(NSMutableString*)originString regex:(NSString*)regex inHrefArray:(NSMutableArray*)hrefArray inEmojiArray:(NSMutableArray*)emojiArray {
+    unichar replacementChar = 0xFFFF;
+    NSString *replaceString = [NSString stringWithCharacters:&replacementChar length:1];
+    
     NSString *textStr = [NSString stringWithString:originString];
     NSInteger begin = 0;
     int offset = 0;
     
-    NSMutableArray *emojiArray = [[NSMutableArray alloc] init];
+    NSMutableArray *textModelArray = [[NSMutableArray alloc] init];
     NSArray *matchStrs = [originString componentsMatchedByRegex:regex];
     for (NSString *matchStr in matchStrs) {
         NSRange range = [textStr rangeOfString:matchStr];
@@ -58,38 +61,37 @@
         
         range.location += begin;
         begin = range.location + range.length;
-        
-        unichar replacementChar = 0xFFFF;
-        NSString *replacementStr = [NSString stringWithCharacters:&replacementChar length:1];
         
         TextModel *textModel = [[TextModel alloc] init];
         textModel.type = EMOJI;
         textModel.text = matchStr;
-        textModel.range = NSMakeRange(range.location - offset, [replacementStr length]);
+        textModel.range = NSMakeRange(range.location - offset, [replaceString length]);
         textModel.color = ClearColor;
-        [emojiArray addObject:textModel];
+        [textModelArray addObject:textModel];
         
-        [originString replaceCharactersInRange:NSMakeRange(range.location - offset, range.length) withString:replacementStr];
-        offset += range.length - [replacementStr length];
+        [originString replaceCharactersInRange:NSMakeRange(range.location - offset, range.length) withString:replaceString];
+        offset += range.length - [replaceString length];
         
-        for (TextModel *model in array) {
+        for (TextModel *model in hrefArray) {
             if (model.type == AUDIO) {
                 if (model.range.location > textModel.range.location) {
-                    int diffValue = [matchStr length] - [replacementStr length];
+                    int diffValue = [matchStr length] - [replaceString length];
                     model.range = NSMakeRange(model.range.location - diffValue, model.range.length);
                 }
             }
         }
     }
-    [array addObjectsFromArray:emojiArray];
+    [emojiArray addObjectsFromArray:textModelArray];
 }
 
-- (void)parseImageOfText:(NSMutableString*)originString regex:(NSString*)regex inArray:(NSMutableArray*)array {
+- (void)parseImageOfText:(NSMutableString*)originString regex:(NSString*)regex inHrefArray:(NSMutableArray*)hrefArray inEmojiArray:(NSMutableArray*)emojiArray inImageArray:(NSMutableArray*)imageArray {
+    NSString *replaceString = @"\n ";
+    
     NSString *textStr = [NSString stringWithString:originString];
     NSInteger begin = 0;
     int offset = 0;
     
-    NSMutableArray *imageArray = [[NSMutableArray alloc] init];
+    NSMutableArray *textModelArray = [[NSMutableArray alloc] init];
     NSArray *matchStrs = [originString componentsMatchedByRegex:regex];
     for (NSString *matchStr in matchStrs) {
         NSRange range = [textStr rangeOfString:matchStr];
@@ -98,31 +100,35 @@
         range.location += begin;
         begin = range.location + range.length;
         
-        NSString *replacementStr = @" ";
-        
         TextModel *textModel = [[TextModel alloc] init];
         textModel.type = IMAGE;
         textModel.text = matchStr;
-        textModel.range = NSMakeRange(range.location - offset, [replacementStr length]);
+        textModel.range = NSMakeRange(range.location - offset, [replaceString length]);
         textModel.color = ClearColor;
-        [imageArray addObject:textModel];
+        [textModelArray addObject:textModel];
         
-        [originString replaceCharactersInRange:NSMakeRange(range.location - offset, range.length) withString:replacementStr];
-        offset += range.length - [replacementStr length];
+        [originString replaceCharactersInRange:NSMakeRange(range.location - offset, range.length) withString:replaceString];
+        offset += range.length - [replaceString length];
         
-        for (TextModel *model in array) {
-            if (model.type == AUDIO || model.type == EMOJI) {
+        for (TextModel *model in hrefArray) {
+            if (model.type == AUDIO) {
                 if (model.range.location > textModel.range.location) {
-                    int diffValue = [matchStr length] - [replacementStr length];
+                    int diffValue = [matchStr length] - [replaceString length];
                     model.range = NSMakeRange(model.range.location - diffValue, model.range.length);
                 }
             }
         }
+        for (TextModel *model in emojiArray) {
+            if (model.range.location > textModel.range.location) {
+                int diffValue = [matchStr length] - [replaceString length];
+                model.range = NSMakeRange(model.range.location - diffValue, model.range.length);
+            }
+        }
     }
-    [array addObjectsFromArray:imageArray];
+    [imageArray addObjectsFromArray:textModelArray];
 }
 
-- (void)parseHrefOfText:(NSMutableString*)originString regex:(NSString*)regex linkHead:(NSString*)linkHead inArray:(NSMutableArray*)array {
+- (void)parseHrefOfText:(NSMutableString*)originString regex:(NSString*)regex linkHead:(NSString*)linkHead inHrefArray:(NSMutableArray*)hrefArray {
     NSString *textStr = [NSString stringWithString:originString];
     NSInteger begin = 0;
     
@@ -142,17 +148,17 @@
         NSString *keyWord = CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (__bridge CFStringRef)(matchStr), NULL, (__bridge CFStringRef)(CharactersToBeEscaped), kCFStringEncodingUTF8));
         textModel.url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", linkHead, keyWord]];
         
-        [array addObject:textModel];
+        [hrefArray addObject:textModel];
     }
 }
 
-- (void)parseText:(NSMutableString*)originString inArray:(NSMutableArray*)array  {
-    [self parseAudioHrefOfText:originString regex:AudioHrefRegex linkHead:@"audio:" inArray:array];
-    [self parseEmojiOfText:originString regex:EmojiRegex inArray:array];
-    [self parseImageOfText:originString regex:ImageHrefRegex inArray:array];
+- (void)parseText:(NSMutableString*)originString inHrefArray:(NSMutableArray*)hrefArray inEmojiArray:(NSMutableArray*)emojiArray inImageArray:(NSMutableArray*)imageArray {
+    [self parseAudioHrefOfText:originString regex:AudioHrefRegex linkHead:@"audio:" inHrefArray:hrefArray];
+    [self parseEmojiOfText:originString regex:EmojiRegex inHrefArray:hrefArray inEmojiArray:emojiArray];
+    [self parseImageOfText:originString regex:ImageHrefRegex inHrefArray:hrefArray inEmojiArray:emojiArray inImageArray:imageArray];
     
-    [self parseHrefOfText:originString regex:AtRegex linkHead:@"at:" inArray:array];
-    [self parseHrefOfText:originString regex:HrefRegex linkHead:@"" inArray:array];
+    [self parseHrefOfText:originString regex:AtRegex linkHead:@"at:" inHrefArray:hrefArray];
+    [self parseHrefOfText:originString regex:HrefRegex linkHead:@"" inHrefArray:hrefArray];
 }
 
 @end

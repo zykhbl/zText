@@ -17,15 +17,15 @@
 @synthesize originString;
 @synthesize parser;
 @synthesize emojiChache;
-@synthesize array;
+@synthesize hrefArray;
+@synthesize emojiArray;
+@synthesize imageArray;
 @synthesize imagePathArray;
 
 @synthesize attributedString;
 @synthesize textFramesetter;
 @synthesize frame;
 @synthesize textFrame;
-@synthesize hasEmoji;
-@synthesize hasImage;
 
 - (void)dealloc {
     if (self.textFramesetter) {
@@ -45,9 +45,10 @@
     if (self) {
         self.parser = [[TextParser alloc] init];
         self.emojiChache = [EmojiCache defaultEmojiCache];
-        self.array = [[NSMutableArray alloc] init];
+        self.hrefArray = [[NSMutableArray alloc] init];
+        self.emojiArray = [[NSMutableArray alloc] init];
+        self.imageArray = [[NSMutableArray alloc] init];
         self.imagePathArray = [[NSMutableArray alloc] init];
-        self.hasEmoji = self.hasImage = NO;
     }
     
     return self;
@@ -116,7 +117,7 @@ static CGFloat getWidth(void* ref){
 }
 
 - (void)containInSize:(CGSize)size {
-    [self.parser parseText:self.originString inArray:self.array];
+    [self.parser parseText:self.originString inHrefArray:self.hrefArray inEmojiArray:self.emojiArray inImageArray:self.imageArray];
     
     self.attributedString = [[NSMutableAttributedString alloc] initWithString:self.originString];
     
@@ -124,33 +125,9 @@ static CGFloat getWidth(void* ref){
     [textAttributes fillTextFont:[UIFont systemFontOfSize:MinFontSize].fontName fontSize:MinFontSize textColor:NormalColor lineSpacing:LineSpacing lineAlignment:NSTextAlignmentLeft lineBreakMode:kCTLineBreakByWordWrapping];
     [self fillTextAttributes:textAttributes inRange:NSMakeRange(0, [self.originString length])];
     
-    int imgIndex = 1;
-    for (TextModel *textModel in self.array) {
+    for (TextModel *textModel in self.hrefArray) {
         switch (textModel.type) {
-            case HREF: {
-                [self.attributedString addAttribute:(NSString*)kCTForegroundColorAttributeName value:(id)textModel.color.CGColor range:textModel.range];
-                break;
-            }
-            case EMOJI: {
-                self.hasEmoji = YES;
-                
-                textModel.emoji = [self emojiForKey:textModel.text];
-                textModel.width = 20.0;
-                textModel.height = 15.0;
-                
-                [self addRunDelegate:textModel];
-                break;
-            }
-            case IMAGE: {
-                self.hasImage = YES;
-                ++imgIndex;
-                
-                textModel.width = 5.0;
-                textModel.height = 15.0;
-                
-                [self addRunDelegate:textModel];
-                break;
-            }
+            case HREF :
             case AUDIO: {
                 [self.attributedString addAttribute:(NSString*)kCTForegroundColorAttributeName value:(id)textModel.color.CGColor range:textModel.range];
                 break;
@@ -164,6 +141,19 @@ static CGFloat getWidth(void* ref){
         }
     }
     
+    for (TextModel *textModel in self.emojiArray) {
+        textModel.emoji = [self emojiForKey:textModel.text];
+        textModel.width = 20.0;
+        textModel.height = 15.0;
+        [self addRunDelegate:textModel];
+    }
+    
+    for (TextModel *textModel in self.imageArray) {
+        textModel.width = 1.0;
+        textModel.height = 15.0;
+        [self addRunDelegate:textModel];
+    }
+    
     self.textFramesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)(self.attributedString));
     
     self.frame = CGRectZero;
@@ -175,26 +165,24 @@ static CGFloat getWidth(void* ref){
     self.textFrame = CTFramesetterCreateFrame(self.textFramesetter, CFRangeMake(0,0), textPath, NULL);
     CGPathRelease(textPath);
     
-    frame.size.height += imgIndex * (ImageHeight + LineSpacing * 2.0);
+    frame.size.height += (self.imageArray.count + 1) * (ImageHeight + LineSpacing * 2.0);
     
-    if (self.hasImage) {
-        for (TextModel *textModel in self.array) {
-            if (textModel.type == IMAGE) {
-                [self calculateRectOfImage:textModel];
-                
-                CFRelease(self.textFrame);
-                
-                textPath = CGPathCreateMutable();
-                CGPathAddRect(textPath, NULL, self.frame);
-                CFDictionaryRef clipPathsDict = [self clipPaths];
-                self.textFrame = CTFramesetterCreateFrame(self.textFramesetter, CFRangeMake(0,0), textPath, clipPathsDict);
-                CFRelease(clipPathsDict);
-                CGPathRelease(textPath);
-            }
+    for (TextModel *textModel in self.imageArray) {
+        if (textModel.type == IMAGE) {
+            [self calculateRectOfImage:textModel];
+            
+            CFRelease(self.textFrame);
+            
+            textPath = CGPathCreateMutable();
+            CGPathAddRect(textPath, NULL, self.frame);
+            CFDictionaryRef clipPathsDict = [self clipPaths];
+            self.textFrame = CTFramesetterCreateFrame(self.textFramesetter, CFRangeMake(0,0), textPath, clipPathsDict);
+            CFRelease(clipPathsDict);
+            CGPathRelease(textPath);
         }
     }
     
-    if (self.hasEmoji) {
+    if (self.emojiArray.count > 0) {
         [self calculateRectOfEmoji];
     }
 }
@@ -259,25 +247,10 @@ static CGFloat getWidth(void* ref){
             
             TextModel *textModel = CTRunDelegateGetRefCon(runDelegate);
             if (textModel == model) {
-                CGFloat xOffset = CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, NULL);
-                CGFloat x = lineOrigins[i].x + xOffset;
-                CGFloat y = lineOrigins[0].y - lineOrigins[i].y;
+                CGFloat x = 0.0;
+                CGFloat y = lineOrigins[0].y - lineOrigins[i + 1].y;
                 CGFloat w = self.frame.size.width;
-                CGFloat h = ImageHeight;
-            
-                BOOL addDiff = NO;
-                if (x == 0.0) {
-                    addDiff = YES;
-                    x = 0.0;
-                    h -= MinFontSize + LineSpacing;
-                } else if (x <= 80.0 || x >= 240.0) {
-                    x = 0.0;
-                    y = lineOrigins[0].y - lineOrigins[i + 1].y;
-                } else if (x > 80.0 && x < 140.0) {
-                    w = ImageHeight;
-                } else {
-                    w -= x;
-                }
+                CGFloat h = ImageHeight - (MinFontSize + LineSpacing);
                 
                 CGRect imageRect = CGRectMake(x, y,  w, h);
                 CGAffineTransform transform = CGAffineTransformIdentity;
@@ -289,10 +262,12 @@ static CGFloat getWidth(void* ref){
                 [self.imagePathArray addObject:clipPathDict];
                 CFRelease(clipPath);
                 
-                if (addDiff) {
-                    imageRect.size.height += MinFontSize + LineSpacing * 2.0;
+                imageRect.size.height += MinFontSize + LineSpacing * 4.0;
+                if (textModel.range.location == 0) {
+                    CGFloat diffHeight = MinFontSize + LineSpacing;
+                    imageRect.origin.y -= diffHeight;
+                    imageRect.size.height += diffHeight;
                 }
-                
                 textModel.rect = imageRect;
                 
                 return;

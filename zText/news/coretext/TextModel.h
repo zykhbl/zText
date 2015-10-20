@@ -7,11 +7,11 @@
 //
 
 typedef enum {
-	HREF,
-	EMOJI,
-    IMAGE,
-    AUDIO,
-    VIDEO
+	HREF  = 1 << 0,
+	EMOJI = 1 << 1,
+    IMAGE = 1 << 2,
+    AUDIO = 1 << 3,
+    VIDEO = 1 << 4
 } TextType;
 
 #import <Foundation/Foundation.h>
