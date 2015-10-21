@@ -13,7 +13,10 @@
 
 @property (nonatomic, strong) TextContainer *textContainer;
 @property (nonatomic, strong) NSTextCheckingResult *activeLink;
+@property (nonatomic, strong) NSMutableArray *emojiViewArray;
+@property (nonatomic, strong) NSMutableArray *imageViewArray;
 
+- (void)addEmojiViews;
 - (void)addImageViews;
 
 @end

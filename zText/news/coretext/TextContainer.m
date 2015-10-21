@@ -56,7 +56,7 @@
 
 - (void)fillTextAttributes:(TextAttributes*)textAttributes inRange:(NSRange)range {
     CGFloat lineSpacing = textAttributes.lineSpacing;
-    NSTextAlignment lineAlignment = textAttributes.lineAlignment;
+    CTTextAlignment lineAlignment = textAttributes.lineAlignment;
     CTLineBreakMode lineBreakMode = textAttributes.lineBreakMode;
     
     CTParagraphStyleSetting paragraphStyle_settings[] = {
@@ -122,7 +122,7 @@ static CGFloat getWidth(void* ref){
     self.attributedString = [[NSMutableAttributedString alloc] initWithString:self.originString];
     
     TextAttributes *textAttributes = [[TextAttributes alloc] init];
-    [textAttributes fillTextFont:[UIFont systemFontOfSize:MinFontSize].fontName fontSize:MinFontSize textColor:NormalColor lineSpacing:LineSpacing lineAlignment:NSTextAlignmentLeft lineBreakMode:kCTLineBreakByWordWrapping];
+    [textAttributes fillTextFont:[UIFont systemFontOfSize:MinFontSize].fontName fontSize:MinFontSize textColor:NormalColor lineSpacing:LineSpacing lineAlignment:NSTextAlignmentJustified lineBreakMode:NSLineBreakByWordWrapping];
     [self fillTextAttributes:textAttributes inRange:NSMakeRange(0, [self.originString length])];
     
     for (TextModel *textModel in self.hrefArray) {
@@ -143,7 +143,7 @@ static CGFloat getWidth(void* ref){
     
     for (TextModel *textModel in self.emojiArray) {
         textModel.emoji = [self emojiForKey:textModel.text];
-        textModel.width = 20.0;
+        textModel.width = 18.0;
         textModel.height = 15.0;
         [self addRunDelegate:textModel];
     }
@@ -165,21 +165,19 @@ static CGFloat getWidth(void* ref){
     self.textFrame = CTFramesetterCreateFrame(self.textFramesetter, CFRangeMake(0,0), textPath, NULL);
     CGPathRelease(textPath);
     
-    frame.size.height += (self.imageArray.count + 1) * (ImageHeight + LineSpacing * 2.0);
+    frame.size.height += (self.imageArray.count + 5) * (ImageHeight + LineSpacing * 2.0);
     
     for (TextModel *textModel in self.imageArray) {
-        if (textModel.type == IMAGE) {
-            [self calculateRectOfImage:textModel];
-            
-            CFRelease(self.textFrame);
-            
-            textPath = CGPathCreateMutable();
-            CGPathAddRect(textPath, NULL, self.frame);
-            CFDictionaryRef clipPathsDict = [self clipPaths];
-            self.textFrame = CTFramesetterCreateFrame(self.textFramesetter, CFRangeMake(0,0), textPath, clipPathsDict);
-            CFRelease(clipPathsDict);
-            CGPathRelease(textPath);
-        }
+        [self calculateRectOfImage:textModel];
+        
+        CFRelease(self.textFrame);
+        
+        textPath = CGPathCreateMutable();
+        CGPathAddRect(textPath, NULL, self.frame);
+        CFDictionaryRef clipPathsDict = [self clipPaths];
+        self.textFrame = CTFramesetterCreateFrame(self.textFramesetter, CFRangeMake(0,0), textPath, clipPathsDict);
+        CFRelease(clipPathsDict);
+        CGPathRelease(textPath);
     }
     
     if (self.emojiArray.count > 0) {
@@ -206,22 +204,10 @@ static CGFloat getWidth(void* ref){
             
             TextModel *textModel = CTRunDelegateGetRefCon(runDelegate);
             if (textModel.type == EMOJI) {
-                CGRect runBounds;
-                CGFloat ascent;
-                CGFloat descent;
-                runBounds.size.width = CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &ascent, &descent, NULL);
-                runBounds.size.height = ascent + descent;
-                
+                CGRect emojiRect = CGRectMake(0.0, 0.0, 20.0, 20.0);
                 CGFloat xOffset = CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, NULL);
-                runBounds.origin.x = lineOrigins[i].x + xOffset;
-                runBounds.origin.y = lineOrigins[i].y;
-                runBounds.origin.y -= descent + 4.0;
-                
-                CGPathRef pathRef = CTFrameGetPath(self.textFrame);
-                CGRect colRect = CGPathGetBoundingBox(pathRef);
-                CGRect emojiRect = CGRectOffset(runBounds, colRect.origin.x, colRect.origin.y);
-                emojiRect.size.height += 5.0;
-                
+                emojiRect.origin.x = lineOrigins[i].x + xOffset;
+                emojiRect.origin.y = lineOrigins[0].y - lineOrigins[i].y;
                 textModel.rect = emojiRect;
             }
         }
@@ -251,6 +237,9 @@ static CGFloat getWidth(void* ref){
                 CGFloat y = lineOrigins[0].y - lineOrigins[i + 1].y;
                 CGFloat w = self.frame.size.width;
                 CGFloat h = ImageHeight - (MinFontSize + LineSpacing);
+                if (textModel.range.location == 0) {
+                    h -= MinFontSize + LineSpacing;
+                }
                 
                 CGRect imageRect = CGRectMake(x, y,  w, h);
                 CGAffineTransform transform = CGAffineTransformIdentity;

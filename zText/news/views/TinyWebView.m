@@ -13,6 +13,7 @@
 @synthesize coretextView;
 
 - (void)renderString:(NSString*)text {
+    self.clipsToBounds = YES;
     if (self.coretextView == nil) {
         self.coretextView = [[BaseCoretextView alloc] init];
         self.coretextView.backgroundColor = [UIColor whiteColor];
@@ -24,9 +25,14 @@
     [textContainer containInSize:self.bounds.size];
     self.coretextView.textContainer = textContainer;
     self.coretextView.frame = self.coretextView.textContainer.frame;
-    [self.coretextView addImageViews];
-    
     self.contentSize = [self.coretextView.textContainer fitSize];
+    
+    [self loadImages];
+}
+
+- (void)loadImages {
+    [self.coretextView addEmojiViews];
+    [self.coretextView addImageViews];
 }
 
 @end

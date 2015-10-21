@@ -20,9 +20,9 @@
 @property (nonatomic, assign) CGFloat fontSize;
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, assign) CGFloat lineSpacing;
-@property (nonatomic, assign) NSTextAlignment lineAlignment;
+@property (nonatomic, assign) CTTextAlignment lineAlignment;
 @property (nonatomic, assign) CTLineBreakMode lineBreakMode;
 
-- (void)fillTextFont:(NSString*)fontname fontSize:(CGFloat)size textColor:(UIColor*)color lineSpacing:(CGFloat)spacing lineAlignment:(NSTextAlignment)alignment lineBreakMode:(CTLineBreakMode)breakMode;
+- (void)fillTextFont:(NSString*)fontname fontSize:(CGFloat)size textColor:(UIColor*)color lineSpacing:(CGFloat)spacing lineAlignment:(NSTextAlignment)alignment lineBreakMode:(NSLineBreakMode)breakMode;
 
 @end
