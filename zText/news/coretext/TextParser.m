@@ -85,7 +85,8 @@
 }
 
 - (void)parseImageOfText:(NSMutableString*)originString regex:(NSString*)regex inHrefArray:(NSMutableArray*)hrefArray inEmojiArray:(NSMutableArray*)emojiArray inImageArray:(NSMutableArray*)imageArray {
-    NSString *replaceString = @"\n ";
+    unichar replacementChar = 0xFFFF;
+    NSString *replaceString = [NSString stringWithCharacters:&replacementChar length:1];
     
     NSString *textStr = [NSString stringWithString:originString];
     NSInteger begin = 0;

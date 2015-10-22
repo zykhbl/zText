@@ -19,18 +19,12 @@
 @property (nonatomic, strong) NSMutableArray *hrefArray;
 @property (nonatomic, strong) NSMutableArray *emojiArray;
 @property (nonatomic, strong) NSMutableArray *imageArray;
-@property (nonatomic, strong) NSMutableArray *imagePathArray;
 
 @property (nonatomic, strong) NSMutableAttributedString *attributedString;
 @property (nonatomic, assign) CTFramesetterRef textFramesetter;
 @property (nonatomic, assign) CGRect frame;
 @property (nonatomic, assign) CTFrameRef textFrame;
-@property (nonatomic, assign) CTFrameRef otherTextFrame;
-@property (nonatomic, assign) int advanceCount;
-@property (nonatomic, assign) int lineIndex;
 
 - (void)containInSize:(CGSize)size;
-- (void)containInBackgroud;
-- (CGSize)fitSize;
 
 @end

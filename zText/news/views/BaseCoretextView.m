@@ -34,10 +34,11 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextConcatCTM(ctx, CGAffineTransformScale(CGAffineTransformMakeTranslation(0, self.bounds.size.height), 1.0f, -1.0f));
-    
-    CTFrameDraw(self.textContainer.textFrame, ctx);
+    if (self.textContainer.textFrame) {
+        CGContextRef ctx = UIGraphicsGetCurrentContext();
+        CGContextConcatCTM(ctx, CGAffineTransformScale(CGAffineTransformMakeTranslation(0, self.bounds.size.height), 1.0f, -1.0f));
+        CTFrameDraw(self.textContainer.textFrame, ctx);
+    }
 }
 
 - (void)addEmojiViews {
@@ -51,19 +52,7 @@
 }
 
 - (void)addImageViews {
-    for (int i = 0; i < self.textContainer.advanceCount; ++i) {
-        TextModel *textModel = [self.textContainer.imageArray objectAtIndex:i];
-        CGRect rect = textModel.rect;
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
-        [self.imageViewArray addObject:imageView];
-        [imageView sd_setImageWithURL:[[NSURL alloc] initWithString:textModel.text]];
-        [self addSubview:imageView];
-    }
-}
-
-- (void)addOtherImageViews {
-    for (int i = self.textContainer.advanceCount; i < self.textContainer.imageArray.count; ++i) {
-        TextModel *textModel = [self.textContainer.imageArray objectAtIndex:i];
+    for (TextModel *textModel in self.textContainer.imageArray) {
         CGRect rect = textModel.rect;
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
         [self.imageViewArray addObject:imageView];

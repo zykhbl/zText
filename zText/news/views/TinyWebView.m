@@ -25,22 +25,10 @@
     [textContainer containInSize:self.bounds.size];
     self.coretextView.textContainer = textContainer;
     self.coretextView.frame = self.coretextView.textContainer.frame;
-    self.contentSize = [self.coretextView.textContainer fitSize];
+    self.contentSize = self.coretextView.frame.size;
     
+    [self.coretextView addEmojiViews];
     [self.coretextView addImageViews];
-    
-    [self performSelectorInBackground:@selector(background) withObject:nil];
-}
-
-- (void)background {
-    [self.coretextView.textContainer containInBackgroud];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.contentSize = [self.coretextView.textContainer fitSize];
-        [self.coretextView setNeedsDisplay];
-        [self.coretextView addEmojiViews];
-        [self.coretextView addOtherImageViews];
-    });
 }
 
 @end
