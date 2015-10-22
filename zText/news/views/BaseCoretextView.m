@@ -20,12 +20,14 @@
     return [CATiledLayer class];
 }
 
-- (id)init {
-    self = [super init];
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
     
     if (self) {
         self.emojiViewArray = [[NSMutableArray alloc] init];
         self.imageViewArray = [[NSMutableArray alloc] init];
+        CATiledLayer *tiledLayer = (CATiledLayer*)self.layer;
+        tiledLayer.tileSize = CGSizeMake(frame.size.width, frame.size.height * 2.0);
     }
     
     return self;
@@ -49,7 +51,19 @@
 }
 
 - (void)addImageViews {
-    for (TextModel *textModel in self.textContainer.imageArray) {
+    for (int i = 0; i < self.textContainer.advanceCount; ++i) {
+        TextModel *textModel = [self.textContainer.imageArray objectAtIndex:i];
+        CGRect rect = textModel.rect;
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
+        [self.imageViewArray addObject:imageView];
+        [imageView sd_setImageWithURL:[[NSURL alloc] initWithString:textModel.text]];
+        [self addSubview:imageView];
+    }
+}
+
+- (void)addOtherImageViews {
+    for (int i = self.textContainer.advanceCount; i < self.textContainer.imageArray.count; ++i) {
+        TextModel *textModel = [self.textContainer.imageArray objectAtIndex:i];
         CGRect rect = textModel.rect;
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
         [self.imageViewArray addObject:imageView];

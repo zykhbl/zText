@@ -25,8 +25,12 @@
 @property (nonatomic, assign) CTFramesetterRef textFramesetter;
 @property (nonatomic, assign) CGRect frame;
 @property (nonatomic, assign) CTFrameRef textFrame;
+@property (nonatomic, assign) CTFrameRef otherTextFrame;
+@property (nonatomic, assign) int advanceCount;
+@property (nonatomic, assign) int lineIndex;
 
 - (void)containInSize:(CGSize)size;
+- (void)containInBackgroud;
 - (CGSize)fitSize;
 
 @end

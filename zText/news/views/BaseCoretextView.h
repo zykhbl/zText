@@ -18,5 +18,6 @@
 
 - (void)addEmojiViews;
 - (void)addImageViews;
+- (void)addOtherImageViews;
 
 @end

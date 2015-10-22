@@ -15,7 +15,7 @@
 - (void)renderString:(NSString*)text {
     self.clipsToBounds = YES;
     if (self.coretextView == nil) {
-        self.coretextView = [[BaseCoretextView alloc] init];
+        self.coretextView = [[BaseCoretextView alloc] initWithFrame:self.bounds];
         self.coretextView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.coretextView];
     }
@@ -27,12 +27,20 @@
     self.coretextView.frame = self.coretextView.textContainer.frame;
     self.contentSize = [self.coretextView.textContainer fitSize];
     
-    [self loadImages];
+    [self.coretextView addImageViews];
+    
+    [self performSelectorInBackground:@selector(background) withObject:nil];
 }
 
-- (void)loadImages {
-    [self.coretextView addEmojiViews];
-    [self.coretextView addImageViews];
+- (void)background {
+    [self.coretextView.textContainer containInBackgroud];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.contentSize = [self.coretextView.textContainer fitSize];
+        [self.coretextView setNeedsDisplay];
+        [self.coretextView addEmojiViews];
+        [self.coretextView addOtherImageViews];
+    });
 }
 
 @end
